@@ -109,12 +109,13 @@ DATABASES = {
         "PORT": "5432",
     },
     # local SQLite database used for development and testing
-    "default": {
+    "local": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
 }
-
+default_database = os.environ.get("DJANGO_DATABASE", "local")
+DATABASES["default"] = DATABASES[default_database]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
