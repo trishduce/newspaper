@@ -109,7 +109,7 @@ DATABASES = {
         "PORT": "5432",
     },
     # local SQLite database used for development and testing
-    "local": {
+    "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
