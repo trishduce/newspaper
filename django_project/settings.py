@@ -19,9 +19,9 @@ env.read_env()  # new
 
 from pathlib import Path
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://csci258.cs.umt.edu",
-]
+# CSRF_TRUSTED_ORIGINS = [
+#    "https://csci258.cs.umt.edu",
+# ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
