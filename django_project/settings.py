@@ -13,18 +13,23 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from environs import Env  # new
 import os
-import yaml
 
 env = Env()  # new
 env.read_env()  # new
 
 from pathlib import Path
 
-CSRF_TRUSTED_ORIGINS = ["https://*.csci258.cs.umt.edu"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://csci258.cs.umt.edu",
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-FORCE_SCRIPT_NAME = "/" + os.environ.get("SITE_NAME", "")
+FORCE_SCRIPT_NAME = (
+    "/" + os.environ.get("SITE_NAME", "")
+    if os.environ.get("SITE_NAME", "") != ""
+    else ""
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -160,6 +165,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # enable caching and compression when serving static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
