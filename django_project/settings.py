@@ -19,9 +19,9 @@ env.read_env()  # new
 
 from pathlib import Path
 
-# CSRF_TRUSTED_ORIGINS = [
-#    "https://csci258.cs.umt.edu",
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    "https://csci258.cs.umt.edu",
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +35,7 @@ FORCE_SCRIPT_NAME = (
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "70FP2HcBpp_9lGu80cqx1OiNkYulwX88eoygSnWS7no")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    #    "whitenoise.runserver_nostatic",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # 3rd Party
     "crispy_forms",  # new
